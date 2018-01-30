@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="en">  
 <head>    
-	<title>My first Bootstrap page </title>    
+	<title>Login page </title>    
 	<meta name="viewport" content="width=device-width, initialscale=1">      
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">    
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
@@ -27,19 +27,70 @@
 	    		<label for="inputPassword" class="control-label">Password</label>
 	      			<div class="form-group">
 	        			<input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>
-	        		<div class="help-block">Minimum of 6 characters</div>
+	        		
 	      			</div>
 	      			<div class="form-group">
 	        			<input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
 	      			</div>
 	  		</div>
-		     <button id="submit" type="submit" onclick="$(myfunction)" class="btn btn-info">Login</button>
+		     <button id="submit" type="submit" class="btn btn-info">Login</button>
 		</form>
 	</div>
 
 	<script> 
 
-	/*$('#submit').on('click', function(){ 
+	//Case 3:
+	 	$('#submit').on('click', function(){
+	        checkformValidation();
+	    });
+
+ 	    function checkformValidation() {
+	        var value = $("#name").val(); 
+	        var sEmail = $('#email').val();
+	        var inputPassword = $('#inputPassword').val();
+	        var inputPasswordConfirm = $('#inputPasswordConfirm').val();
+	        var m="";
+			var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+
+			if (value=="" || sEmail==""){        
+	        	alert("Please Fill Details...");
+	        }
+	        else{
+				if ($("#male").is(":checked")) {
+				    m=m+"Hi Mr " + value + "!! ";
+				}else{
+				    if ($("#female").is(":checked")) {
+				    	m=m+"Hi Miss " + value + "!! ";
+				    }else{
+				    	m=m+"Please Select gender and ";
+				    }
+				}
+			
+			    if (filter.test(sEmail)) {
+			    	if (inputPassword=="" || inputPasswordConfirm==""){
+			    		alert(m+' Your Email is valid but Please enter Password');
+			    	}else{
+				    	if (inputPassword!=inputPasswordConfirm){
+				   		alert(m+' Your Email is valid but Password not matched');
+				   		}else{
+							alert(m+'Your Email is valid and Password also matched');
+				   		}
+			   		}	        
+			    }
+			    else {
+			    	if (inputPassword=="" || inputPasswordConfirm==""){
+			    		alert(m+'  Please enter Password and a valid email');
+			    	}else{
+				    	if (inputPassword!=inputPasswordConfirm){
+				   		alert(m+' Please enter valid Email Address and Please check your Password');
+				   		} else{
+				   			alert(m+'Password matched but Please fill valid Email Address');
+				   		}
+			   		}
+			    }
+			   	
+			}
+	    }
 
 	// Case 2:
 	  /* var value = $("#name").val(); 
@@ -48,21 +99,31 @@
 	    }else{
 	        alert("Hi Miss. " + value);
 	    }*/
+
 	//case 1: 
 	/*
 	 	var value = $("#name").val(); 
-		alert('Hi ' + value);*/
-		
-//	})
-   *
+		alert('Hi ' + value);*/		
+	//})
 
-	(function $(myfunction){
-		var value = $("#name").val(); 
-		if (value==""){
-			alert("Hi " + value);
-		}
-  		//some code
-    });       
+
+	 /*
+
+	        if (value==""){        
+	        	alert("Please enter your name.");
+
+	        	return;
+	        }
+
+	       
+	        if (sEmail==""){        
+	        	alert("Please enter your email.");
+
+	        	return;
+	        }
+
+*/
+   
     </script>
 
 </body>
